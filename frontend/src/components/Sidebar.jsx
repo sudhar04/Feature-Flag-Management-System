@@ -6,7 +6,7 @@ import {
   Building2,
 } from "lucide-react";
 
-const Sidebar = () => {
+const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
   const menuItems = [
     {
       name: "Dashboard",
@@ -31,43 +31,105 @@ const Sidebar = () => {
   ];
 
   return (
-    <div className="w-64 bg-white rounded-2xl shadow-lg border border-gray-200 p-5">
+    <>
+      {/* Mobile Overlay */}
 
-      <h2 className="text-xs font-semibold uppercase tracking-widest text-gray-400 mb-4">
-        Navigation
-      </h2>
+      {sidebarOpen && (
+        <div
+          onClick={() => setSidebarOpen(false)}
+          className="fixed inset-0 bg-black/40 z-40 lg:hidden"
+        />
+      )}
 
-      <div className="space-y-2">
+      {/* Sidebar */}
 
-        {menuItems.map((item) => {
-          const Icon = item.icon;
+      <aside
+        className={`
 
-          return (
-            <NavLink
-              key={item.path}
-              to={item.path}
-              className={({ isActive }) =>
-                `group flex items-center gap-3 rounded-xl px-4 py-3 transition-all duration-300
+        fixed
+        lg:sticky
+        top-16
+        lg:top-16
+        left-0
+        h-[calc(100vh-64px)]
+        w-64
+        bg-white
+        shadow-xl
+        border-r
+        border-gray-200
+        z-50
+        overflow-y-auto
 
-                ${
-                  isActive
-                    ? "bg-blue-600 text-white shadow-md"
-                    : "text-gray-700 hover:bg-blue-50 hover:text-blue-600"
-                }`
-              }
-            >
-              <Icon
-                size={20}
-                className="transition-transform duration-300 group-hover:scale-110"
-              />
+        transform
+        transition-transform
+        duration-300
 
-              <span className="font-medium">{item.name}</span>
-            </NavLink>
-          );
-        })}
+        ${
+          sidebarOpen
+            ? "translate-x-0"
+            : "-translate-x-full lg:translate-x-0"
+        }
 
-      </div>
-    </div>
+        `}
+      >
+
+        <div className="p-6">
+
+          <h2 className="uppercase tracking-widest text-xs text-gray-400 mb-6">
+
+            Navigation
+
+          </h2>
+
+          <div className="space-y-2">
+
+            {menuItems.map((item) => {
+              const Icon = item.icon;
+
+              return (
+                <NavLink
+                  key={item.path}
+                  to={item.path}
+                  onClick={() => setSidebarOpen(false)}
+                  className={({ isActive }) =>
+                    `
+
+                    flex
+                    items-center
+                    gap-3
+                    px-4
+                    py-3
+                    rounded-xl
+                    transition-all
+                    duration-300
+
+                    ${
+                      isActive
+                        ? "bg-blue-600 text-white shadow-md"
+                        : "text-gray-700 hover:bg-blue-50 hover:text-blue-600"
+                    }
+
+                  `
+                  }
+                >
+                  <Icon size={20} />
+
+                  <span className="font-medium">
+
+                    {item.name}
+
+                  </span>
+
+                </NavLink>
+              );
+            })}
+
+          </div>
+
+        </div>
+
+      </aside>
+    </>
   );
 };
 

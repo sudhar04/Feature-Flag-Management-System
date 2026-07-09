@@ -78,67 +78,95 @@ const Dashboard = () => {
         <div>
             
 
-            <h1>Dashboard</h1>
+            <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-8">
 
-            <Link to="/create-feature">
+                <div>
+                    <h1 className="text-3xl font-bold text-gray-800">
+                        Dashboard
+                    </h1>
 
-                <button>
+                    <p className="text-gray-500 mt-1">
+                        Manage and monitor all feature flags.
+                    </p>
+                </div>
 
-                    Create New Feature
+                <Link to="/create-feature">
 
-                </button>
+                    <button className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-xl font-medium shadow-md transition">
 
-            </Link>
+                        + Create Feature
 
-            <br /><br />
-            
-            <input
-                type="text"
-                placeholder="Search Feature..."
-                value={search}
-                onChange={(e) => setSearch(e.target.value)}
-                className="border p-2 rounded w-full mb-4"
-            />
-            
+                    </button>
 
-            <div className="flex gap-3 mb-4">
-
-                <button
-                    onClick={() => setFilter("all")}
-                    className={`px-4 py-2 rounded text-white ${
-                        filter === "all"
-                            ? "bg-blue-700"
-                            : "bg-blue-500"
-                    }`}
-                >
-                    All
-                </button>
-
-                <button
-                    onClick={() => setFilter("enabled")}
-                    className={`px-4 py-2 rounded text-white ${
-                        filter === "enabled"
-                            ? "bg-green-700"
-                            : "bg-green-500"
-                    }`}
-                >
-                    Enabled
-                </button>
-
-                <button
-                    onClick={() => setFilter("disabled")}
-                    className={`px-4 py-2 rounded text-white ${
-                        filter === "disabled"
-                            ? "bg-red-700"
-                            : "bg-red-500"
-                    }`}
-                >
-                    Disabled
-                </button>
+                </Link>
 
             </div>
 
-            <div className="grid grid-cols-3 gap-4 mb-6">
+            
+            
+            <div className="mb-6">
+
+                <input
+                    type="text"
+                    placeholder="Search features..."
+                    value={search}
+                    onChange={(e) => setSearch(e.target.value)}
+                    className="w-full border border-gray-300 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500 transition"
+                />
+
+            </div>
+            
+
+            <div className="flex flex-wrap gap-3 mb-8">
+
+  {/* All */}
+
+            <button
+                onClick={() => setFilter("all")}
+                className={`px-5 py-2 rounded-full font-medium transition-all duration-300
+                ${
+                    filter === "all"
+                    ? "bg-blue-600 text-white shadow-lg"
+                    : "bg-gray-100 text-gray-700 hover:bg-gray-200"
+                }
+                `}
+            >
+                All
+            </button>
+
+            {/* Enabled */}
+
+            <button
+                onClick={() => setFilter("enabled")}
+                className={`px-5 py-2 rounded-full font-medium transition-all duration-300
+                ${
+                    filter === "enabled"
+                    ? "bg-green-600 text-white shadow-lg"
+                    : "bg-gray-100 text-gray-700 hover:bg-gray-200"
+                }
+                `}
+            >
+                Enabled
+            </button>
+
+            {/* Disabled */}
+
+            <button
+                onClick={() => setFilter("disabled")}
+                className={`px-5 py-2 rounded-full font-medium transition-all duration-300
+                ${
+                    filter === "disabled"
+                    ? "bg-red-600 text-white shadow-lg"
+                    : "bg-gray-100 text-gray-700 hover:bg-gray-200"
+                }
+                `}
+            >
+                Disabled
+            </button>
+
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-5 mb-8">
 
                 <div className="bg-blue-500 text-white p-4 rounded">
 

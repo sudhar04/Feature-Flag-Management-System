@@ -1,58 +1,83 @@
+import { Menu, X, LogOut, Rocket } from "lucide-react";
 import { useAuth } from "../context/AuthContext";
 import { useNavigate } from "react-router-dom";
 
-const Navbar = () => {
+const Navbar = ({ sidebarOpen, setSidebarOpen }) => {
+  const { user, logout } = useAuth();
+  const navigate = useNavigate();
 
-    const { user, logout } = useAuth();
+  const handleLogout = () => {
+    logout();
+    navigate("/");
+  };
 
-    const navigate = useNavigate();
+  return (
+    <nav className="bg-blue-600 shadow-md sticky top-0 z-40">
 
-    const handleLogout = () => {
+      <div className="flex items-center justify-between px-4 md:px-6 h-16">
 
-        logout();
+        {/* Left */}
 
-        navigate("/");
+        <div className="flex items-center gap-3">
 
-    }; 
+          {/* Mobile Menu */}
 
-    return (
+          <button
+            onClick={() => setSidebarOpen(!sidebarOpen)}
+            className="lg:hidden text-white"
+          >
+            {sidebarOpen ? <X size={28} /> : <Menu size={28} />}
+          </button>
 
-        <nav className="bg-blue-600 text-white px-6 py-4 flex justify-between items-center shadow">
+          <div className="flex items-center gap-2">
 
-            <h1 className="text-xl font-bold">
+            <Rocket
+              className="text-white"
+              size={28}
+            />
 
-                🚀 Feature Flag Management
+            <h1 className="text-white font-bold text-lg md:text-xl">
+
+              Feature Flag Management
 
             </h1>
 
-            <div className="flex items-center gap-4">
+          </div>
 
-                <span>
+        </div>
 
-                    Welcome,
+        {/* Right */}
 
-                    {user?.name || "Admin"}
+        <div className="flex items-center gap-4">
 
-                </span>
+          <span className="hidden sm:block text-white">
 
-                <button
+            Welcome,
 
-                    onClick={handleLogout}
+            <strong className="ml-1">
 
-                    className="bg-red-500 px-4 py-2 rounded hover:bg-red-600"
+              {user?.name || "Admin"}
 
-                >
+            </strong>
 
-                    Logout
+          </span>
 
-                </button>
+          <button
+            onClick={handleLogout}
+            className="bg-red-500 hover:bg-red-600 transition px-4 py-2 rounded-lg text-white flex items-center gap-2"
+          >
+            <LogOut size={18} />
 
-            </div>
+            Logout
 
-        </nav>
+          </button>
 
-    );
+        </div>
 
+      </div>
+
+    </nav>
+  );
 };
 
 export default Navbar;
