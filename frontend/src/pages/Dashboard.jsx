@@ -206,15 +206,19 @@ const Dashboard = () => {
 
             ) : (
 
-                filteredFeatures.map((feature) => (
+                <div className="space-y-6">
 
-                    <FeatureCard
-                        key={feature._id}
-                        feature={feature}
-                        refreshFeatures={fetchFeatures}
-                    />
+    {filteredFeatures.map((feature) => (
 
-                ))
+        <FeatureCard
+            key={feature._id}
+            feature={feature}
+            refreshFeatures={fetchFeatures}
+        />
+
+    ))}
+
+</div>
 
             )}
 
