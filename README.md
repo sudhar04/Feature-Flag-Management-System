@@ -6,6 +6,22 @@ This application allows administrators to create, manage, enable/disable, search
 
 ---
 
+## 🔐 Demo Credentials
+
+Explore the Feature Flag Management System using the demo account.
+
+| Field | Credentials |
+|---|---|
+| **Email** | `your-demo-email@example.com` |
+| **Password** | `your-demo-password` |
+
+> 💡 These credentials are provided for recruiters and reviewers to explore the live application.
+
+**Live Demo:** [Open Application](https://multi-feature-flag-management-system.vercel.app/)
+
+---
+
+
 ## 🌐 Live Demo
 
 🔗 **Live Website:** https://multi-feature-flag-management-system.vercel.app/
