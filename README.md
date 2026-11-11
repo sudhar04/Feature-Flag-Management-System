@@ -12,7 +12,7 @@ Explore the Feature Flag Management System using the demo account.
 
 | Field | Credentials |
 |---|---|
-| **Email** | `your-demo-email@example.com` |
+| **Email** | `sudhar@gmail.com` |
 | **Password** | `your-demo-password` |
 
 > 💡 These credentials are provided for recruiters and reviewers to explore the live application.
