@@ -15,14 +15,6 @@ function Login() {
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
 
-  const demoEmail = import.meta.env.VITE_DEMO_EMAIL;
-const demoPassword = import.meta.env.VITE_DEMO_PASSWORD;
-
-const handleDemoLogin = () => {
-  setEmail(demoEmail);
-  setPassword(demoPassword);
-};
-
   const navigate = useNavigate();
   const { login } = useAuth();
 
@@ -206,54 +198,6 @@ const handleDemoLogin = () => {
             </button>
 
           </form>
-           
-          {/* Recruiter Demo Access */}
-
-          <div className="mt-6 border-t border-slate-200 pt-5">
-
-            <div className="text-center mb-3">
-              <p className="text-sm font-semibold text-slate-700">
-                Recruiter Demo Access
-              </p>
-
-              <p className="mt-1 text-xs text-slate-500">
-                Explore the application using our demo account.
-              </p>
-            </div>
-
-            <button
-              type="button"
-              onClick={handleDemoLogin}
-              className="
-                w-full
-                flex
-                items-center
-                justify-center
-                gap-2
-                rounded-xl
-                border
-                border-indigo-200
-                bg-indigo-50
-                py-3
-                px-4
-                text-sm
-                font-semibold
-                text-indigo-700
-                transition-all
-                duration-300
-                hover:bg-indigo-100
-                hover:border-indigo-300
-                active:scale-[0.98]
-                focus:outline-none
-                focus:ring-4
-                focus:ring-indigo-100
-              "
-            >
-              <Rocket size={17} />
-              Use Demo Account
-            </button>
-
-          </div>
 
         </div>
 
